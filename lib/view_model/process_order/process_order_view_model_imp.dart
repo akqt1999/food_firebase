@@ -10,7 +10,6 @@ import 'package:foodapp/view_model/process_order/process_order_view_model.dart';
 class ProcessOrderViewModelImp extends ProcessOrderViewModel {
   @override
   Future<bool> submitOrder(OrderModel orderModel,) {
-
     return writeOrderToFirebase(orderModel);
   }
 

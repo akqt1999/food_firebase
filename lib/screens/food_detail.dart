@@ -42,7 +42,8 @@ class FoodDetailScreen extends StatelessWidget {
                 bottom: PreferredSize(
                   preferredSize: Size.square(foodDetailImageAreaSize(context)),
                   //kich thuoc cua chieu doc cua cai title bar
-                  child: FoodDetailImageWidget(foodListStateController: foodListStateController),
+                  child: FoodDetailImageWidget(
+                      foodListStateController: foodListStateController),
                 ),
               )
             ];
@@ -82,7 +83,6 @@ class FoodDetailScreen extends StatelessWidget {
                                       fontWeight: FontWeight.w900,
                                       color: Colors.blueAccent),
                                 ),
-
                                 children: [
                                   Wrap(
                                     children: foodListStateController
@@ -103,6 +103,7 @@ class FoodDetailScreen extends StatelessWidget {
                                                     : foodDetailStateController
                                                         .selectAddon
                                                         .remove(e),
+
                                               ),
                                             ))
                                         .toList(),

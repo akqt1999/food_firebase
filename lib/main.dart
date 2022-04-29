@@ -8,19 +8,17 @@ import 'package:flutter/material.dart';
 import 'package:foodapp/model/cart_model.dart';
 import 'package:foodapp/model/restaurant_model.dart';
 import 'package:foodapp/screens/restaurant_home.dart';
-import 'package:foodapp/screens/restaurant_home_detail.dart';
 import 'package:foodapp/state/cart_state.dart';
 import 'package:foodapp/state/main_state.dart';
 import 'package:foodapp/strings/main_strings.dart';
 import 'package:foodapp/utils/const.dart';
-import 'package:foodapp/view_model/cart_vm/cart_view_model_imp.dart';
+
 import 'package:foodapp/view_model/main_vm/main_view_model_imp.dart';
 import 'package:foodapp/view_model/process_cart/process_cart_view_model_imp.dart';
 import 'package:foodapp/widgets/common/common_widgets.dart';
 import 'package:foodapp/widgets/main/main_widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,9 +34,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      // cai nay la getx
-      title: 'Flutter Demo',
+    return GetMaterialApp(     // cai nay la getx
+
+    title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -67,6 +65,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> {
+
   @override
   void initState() {
     super.initState();

@@ -42,8 +42,8 @@ dependencies:
   badges: any
   intl: any
   flutter_slidable: any
-  firebase_auth: any
-  flutter_auth_ui: any
+  firebase_auth: ^3.3.4
+  flutter_auth_ui: ^2.4.1
   form_validator: any
 
 dev_dependencies:

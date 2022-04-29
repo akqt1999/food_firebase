@@ -20,6 +20,7 @@ class FoodListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('build food list');
     return Scaffold(
       appBar: AppbarWithCartButton(
         title: '${categoryStateController.selectedCategory.value.name}',

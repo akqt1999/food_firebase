@@ -9,14 +9,14 @@ Future<List<CategoriesModel>> getCategoryByRestaurantId(
 
 
   var list=List<CategoriesModel>.empty(growable: true);
-  var source=await FirebaseDatabase.instance.reference()
+  var source=await FirebaseDatabase.instance.ref()
       .child(RESTAURANT_REF)
       .child(restaunrantId) // moi cai restaurant se co mot cai key,
       .child('Category').once();
 
-  Map<dynamic,dynamic>values=source.value;
-  values.forEach((key, value) {
-  list.add(CategoriesModel.fromJson(jsonDecode(jsonEncode(value)),key));
+  var values=source.snapshot;
+  values.children.forEach((element) {
+  list.add(CategoriesModel.fromJson(jsonDecode(jsonEncode(element.value)),element.key));
   });
 
   return list;

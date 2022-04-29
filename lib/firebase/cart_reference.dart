@@ -24,20 +24,18 @@ Future<List<CartModel>>getCarts(String restaurantId)async {
   var list =List<CartModel>.empty(growable: true);
 
       var source=await FirebaseDatabase.instance
-          .reference().child(CART_REF)
+          .ref().child(CART_REF)
            .child(FirebaseAuth.instance.currentUser.uid)
           .child('restaurantf').once();
-      Map<dynamic,dynamic>values=source.value;
-      values.forEach((key, value) {
-        list.add(CartModel.fromJson(jsonDecode(jsonEncode(value))));
+      var values=source.snapshot;
+      values.children.forEach(( element) {
+        list.add(CartModel.fromJson(jsonDecode(jsonEncode(element))));
         print('dem');
       });
 
   print('i here ${list.length}');
   list.forEach((element) { print('ten mon an: ${element.name}');});
   return list;
-
-
 }
 
 

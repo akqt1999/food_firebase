@@ -27,14 +27,14 @@ Future<List<OrderModel>>getUserOrderMyRestaurant(String restaurantId,String stat
   var userId=FirebaseAuth.instance.currentUser.uid;
   var list=new List<OrderModel>.empty(growable: true);
   var source=await FirebaseDatabase.instance
-  .reference().child(RESTAURANT_REF).child(restaurantId).child(ORDER_REF)
+  .ref().child(RESTAURANT_REF).child(restaurantId).child(ORDER_REF)
       .orderByChild('userId').
   equalTo(userId).once();
-  Map<dynamic,dynamic> values=source.value;
-  values.forEach((key, value) {
-    list.add(OrderModel.fromJson(jsonDecode(jsonEncode(value))));
+  var values=source.snapshot;
+  values.children.forEach((element) {
+    list.add(OrderModel.fromJson(jsonDecode(jsonEncode(element.value))));
   });
-  return list.where((element) => statusMode==ORDER_PROCESSING?
+  return list.where((element) => statusMode==ORDER_PROCESSING?// neu la san pham trong qua trinh , thi lay ra nhung san pham o trang thai 0-1
   (element.orderStatus==0||element.orderStatus==1):
-  element.orderStatus==orderStatusMode).toList();
+  element.orderStatus==orderStatusMode).toList(); // cai  nay se add nhung san pham trong cai khong dc tao  `
 }

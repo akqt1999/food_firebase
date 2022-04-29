@@ -18,6 +18,7 @@ class CategoryScreen extends StatelessWidget {
   final CartStateController cartStateController=Get.find();
   @override
   Widget build(BuildContext context) {
+    print('build category');
     return Scaffold(
       appBar:AppbarWithCartButton(title: '${mainStateController.selectedRestaurant.value.name}',),
       body: FutureBuilder( //FutureBuilder cai nay dung de kiem tra load du lieu , neu trong thang thai dang load thi no se show process bar ,show xong roi thi no se thuc hien cai chuong trinh da load xong
@@ -31,7 +32,6 @@ class CategoryScreen extends StatelessWidget {
               margin: const EdgeInsets.only(top: 10),
               child: CategoryListWidget(lst: lst,categoryStateController: categoryStateController)
             );
-
           }
         },
       ),

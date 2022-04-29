@@ -160,7 +160,6 @@ class PlaceOrderScreen extends StatelessWidget {
                               onConfirm: (){
                                 Get.offAll(()=>RestaurantHome());
                               });
-
                           }
                         },
                       ),

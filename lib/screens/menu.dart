@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:foodapp/strings/restaurant_home_string.dart';
 import 'package:foodapp/view_model/menu_vm/menu_videwmodel_imp.dart';

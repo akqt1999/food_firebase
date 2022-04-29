@@ -8,13 +8,13 @@ Future<List<RestaurantModel>>getRestaurantList() async{
 
   var list=List<RestaurantModel>.empty(growable: true);
   var source=
-      await FirebaseDatabase.instance.reference().child(RESTAURANT_REF).once();
-  Map<dynamic,dynamic>values=source.value;
+      await FirebaseDatabase.instance.ref().child(RESTAURANT_REF).once();
+  var values=source.snapshot;
 
-  values.forEach((key, value) {
+  values.children.forEach((element) {
   //  restaurantModel=RestaurantModel.fromJson(jsonDecode(jsonEncode(values)));
     //restaurantModel.restaurantId=key;
-    list.add(RestaurantModel.fromJson(jsonDecode(jsonEncode(value)),key));
+    list.add(RestaurantModel.fromJson(jsonDecode(jsonEncode(element.value)),element.key));
 //    list.add(restaurantModel);
   });
 

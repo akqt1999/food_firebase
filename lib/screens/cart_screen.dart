@@ -51,8 +51,10 @@ class CartDetailScreen extends StatelessWidget {
                 children: [
                   Expanded(
                       child: ListView.builder(
-                          itemCount: controller.getCart(mainStateController
-                              .selectedRestaurant.value.restaurantId).length,
+                          itemCount: controller
+                              .getCart(mainStateController
+                                  .selectedRestaurant.value.restaurantId)
+                              .length,
                           itemBuilder: (context, indext) => Slidable(
                                 child: Card(
                                   elevation: 8.0,
@@ -100,7 +102,10 @@ class CartDetailScreen extends StatelessWidget {
                                             onChanged: (value) {
                                               cartViewModel.updateCart(
                                                   controller,
-                                                  mainStateController.selectedRestaurant.value.restaurantId,
+                                                  mainStateController
+                                                      .selectedRestaurant
+                                                      .value
+                                                      .restaurantId,
                                                   indext,
                                                   value.toInt());
                                             },
@@ -111,31 +116,42 @@ class CartDetailScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                actionPane: SlidableDrawerActionPane(),
-                                actionExtentRatio: 0.25,
-                                secondaryActions: [
-                                  IconSlideAction(
-                                    caption: 'Delete',
-                                    icon: Icons.delete,
-                                    color: Colors.red,
-                                    onTap: ()=>cartViewModel.deleteCart(
-                                          controller,
-                                          mainStateController.selectedRestaurant.value.restaurantId
-                                          , indext)
-
-                                  )
-                                ],
+                                endActionPane: ActionPane(
+                                  motion: ActionPane(
+                                    motion: ScrollMotion(),
+                                    children: [
+                                      SlidableAction(
+                                          label: 'Delete',
+                                          icon: Icons.delete,
+                                          backgroundColor: Colors.red,
+                                          foregroundColor: Colors.white,
+                                          onPressed: (context) {
+                                            cartViewModel.deleteCart(
+                                                controller,
+                                                mainStateController
+                                                    .selectedRestaurant
+                                                    .value
+                                                    .restaurantId,
+                                                indext);
+                                          })
+                                    ],
+                                  ),
+                                ),
                               ))),
                   TotalWidget(
                     controller: controller,
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 8),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                     width: double.infinity,
-                    child:
-                    ElevatedButton(onPressed: ()=>cartViewModel.processCheckout(context,controller.getCart(
-                      mainStateController.selectedRestaurant.value.restaurantId
-                    )),child: Text('Check out'),),
+                    child: ElevatedButton(
+                      onPressed: () => cartViewModel.processCheckout(
+                          context,
+                          controller.getCart(mainStateController
+                              .selectedRestaurant.value.restaurantId)),
+                      child: Text('Check out'),
+                    ),
                   )
                 ],
               ))

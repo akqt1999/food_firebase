@@ -71,7 +71,6 @@ class OrderModel {
     data['cartItemList'] = this.cartItemList.map((e) => e.toJson()).toList();
     data['orderStatus'] = this.orderStatus;
     data['createDate'] = this.createDate;
-
     return data;
   }
 }
